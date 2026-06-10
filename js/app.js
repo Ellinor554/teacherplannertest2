@@ -112,6 +112,14 @@ window.onload = () => {
 
     // Close lesson-notes modal on Escape
     document.addEventListener('keydown', (e) => {
+        const tag = document.activeElement?.tagName;
+        const isEditing = tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable;
+
+        if (e.key === 't' && !isEditing && !e.ctrlKey && !e.metaKey && !e.altKey) {
+            toggleTodoPanel();
+            return;
+        }
+
         if (e.key === 'Escape') {
             const modal = document.getElementById('lesson-notes-modal');
             if (modal && !modal.classList.contains('hidden')) {
