@@ -18,6 +18,12 @@ export function getMonday(y, w) {
     return new Date(d.setDate(diff));
 }
 
+export function isoWeeksInYear(year) {
+    const jan1 = new Date(year, 0, 1).getDay();
+    const isLeap = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    return (jan1 === 4 || (isLeap && jan1 === 3)) ? 53 : 52;
+}
+
 export function getSortableTime(timeStr) {
     if (!timeStr) return '00:00';
     const match = timeStr.match(/\d{1,2}:\d{2}/);

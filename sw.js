@@ -16,6 +16,10 @@ const URLS_TO_CACHE = [
   './js/lessons.js',
   './js/tools.js',
   './js/ui.js',
+  './js/draggable.js',
+  './js/subjects.js',
+  './js/todo.js',
+  './js/academicPlanning.js',
   'https://cdn.tailwindcss.com',
   'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap'
 ];
@@ -24,9 +28,8 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(URLS_TO_CACHE);
-    })
+    }).then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
@@ -57,7 +60,7 @@ self.addEventListener('fetch', (event) => {
           }
           return networkResponse;
         })
-        .catch(() => cachedResponse);
+        .catch(() => cachedResponse || new Response('Offline', { status: 503, statusText: 'Offline' }));
 
       return cachedResponse || networkFetch;
     })

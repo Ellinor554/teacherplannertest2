@@ -71,9 +71,9 @@ export function insertImageBlobInto(blob, container, onSave) {
     reader.readAsDataURL(blob);
 }
 
-export function insertImageFromFile(input, onSave, onSaveRight) {
+export function insertImageFromFile(input, targetId, onSave, onSaveRight) {
     if (!input.files || !input.files[0]) return;
-    const isRight = document.activeElement && document.activeElement.id === 'sb-plan-right';
+    const isRight = targetId === 'sb-plan-right';
     const target = isRight
         ? document.getElementById('sb-plan-right')
         : document.getElementById('sb-plan');

@@ -1784,10 +1784,10 @@ function openReuseWeekModal(subjectKey, archivedArea) {
 
     modal.appendChild(panel);
 
-    // Close on backdrop click
-    modal.addEventListener('click', (e) => {
+    // Close on backdrop click — use .onclick so repeated openings don't stack listeners
+    modal.onclick = (e) => {
         if (e.target === modal) modal.classList.add('hidden');
-    });
+    };
 }
 
 function reuseArchivedArea(subjectKey, archivedArea, newStartWeek, newEndWeek) {

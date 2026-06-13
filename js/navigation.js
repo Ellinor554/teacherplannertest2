@@ -3,6 +3,7 @@ import {
     setCurrentWeek, setCurrentYear, setActiveView, setActiveDayIndex, setActiveLessonId
 } from './state.js';
 import { ensureWeekExists } from './data.js';
+import { isoWeeksInYear } from './utils.js';
 import { saveData } from './persistence.js';
 import { renderOversikt, renderDayDetail, renderFutureWeeks } from './render.js';
 import { saveAndClearLessonTools, restoreLessonTools } from './tools.js';
@@ -66,8 +67,8 @@ export function changeView(view) {
 export function changeWeek(delta) {
     let w = currentWeek + delta;
     let y = currentYear;
-    if (w > 52) { w = 1; y++; }
-    if (w < 1)  { w = 52; y--; }
+    if (w > isoWeeksInYear(y)) { w = 1; y++; }
+    if (w < 1)  { w = isoWeeksInYear(y - 1); y--; }
     setCurrentWeek(w);
     setCurrentYear(y);
     refreshUI();

@@ -2,7 +2,7 @@ import {
     plannerData, currentWeek, currentYear,
     setPlannerData, setActiveLessonId
 } from './state.js';
-import { getSortableTime, checkIsPlanned } from './utils.js';
+import { getSortableTime, checkIsPlanned, isoWeeksInYear } from './utils.js';
 
 export function getLessons(weekKey) {
     const entry = plannerData[weekKey];
@@ -69,7 +69,7 @@ export function ensureWeekExists() {
     for (let i = 1; i <= 52; i++) {
         let prevW = currentWeek - i;
         let prevY = currentYear;
-        while (prevW < 1) { prevW += 52; prevY--; }
+        while (prevW < 1) { prevY--; prevW += isoWeeksInYear(prevY); }
         const candidate = `${prevY}-W${prevW}`;
         if (weekHasLessons(candidate)) {
             sourceKey = candidate;
@@ -88,7 +88,8 @@ export function propagateToFutureWeeks(sourceKey) {
     for (let i = 1; i <= 52; i++) {
         let futureW = currentWeek + i;
         let futureY = currentYear;
-        if (futureW > 52) { futureW -= 52; futureY++; }
+        const weeksInFutureY = isoWeeksInYear(futureY);
+        if (futureW > weeksInFutureY) { futureW -= weeksInFutureY; futureY++; }
         const futureKey = `${futureY}-W${futureW}`;
         if (weekHasCustomContent(futureKey)) continue;
         copySchedule(sourceKey, futureKey);

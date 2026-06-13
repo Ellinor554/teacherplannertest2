@@ -74,6 +74,7 @@ export function updateNotesButtonState(lesson) {
 
 export function toggleNotesModal() {
     const modal = document.getElementById('lesson-notes-modal');
+    if (!modal) return;
     if (modal.classList.contains('hidden')) {
         openNotesModal();
     } else {
@@ -84,7 +85,7 @@ export function toggleNotesModal() {
 export function openNotesModal() {
     if (!activeLessonId) return;
     const weekKey = `${currentYear}-W${currentWeek}`;
-    const lesson = (plannerData[weekKey] && plannerData[weekKey].lessons[activeDayIndex] || [])
+    const lesson = (plannerData[weekKey]?.lessons?.[activeDayIndex] || [])
         .find(l => l.id === activeLessonId);
     if (!lesson) return;
     document.getElementById('notes-modal-lesson-name').innerText = lesson.subject + ' – ' + lesson.time;
@@ -110,7 +111,7 @@ export function handleNotesModalBackdrop(event) {
 export function savePrivateNotes() {
     if (!activeLessonId) return;
     const weekKey = `${currentYear}-W${currentWeek}`;
-    const lesson = (plannerData[weekKey] && plannerData[weekKey].lessons[activeDayIndex] || [])
+    const lesson = (plannerData[weekKey]?.lessons?.[activeDayIndex] || [])
         .find(l => l.id === activeLessonId);
     if (lesson) {
         lesson.privateNotes = document.getElementById('private-notes-textarea').value;

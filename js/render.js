@@ -79,6 +79,7 @@ export function renderDayDetail() {
     const lessons = (plannerData[weekKey] && plannerData[weekKey].lessons[activeDayIndex])
         ? plannerData[weekKey].lessons[activeDayIndex] : [];
     const listContainer = document.getElementById('detail-lesson-list');
+    if (!listContainer) return;
     listContainer.innerHTML = '';
     const monday = getMonday(currentYear, currentWeek);
     const thisDate = new Date(monday);
@@ -176,6 +177,7 @@ export function renderFutureWeeks() {
 export function setSplitView(on) {
     const divider = document.getElementById('sb-plan-divider');
     const right   = document.getElementById('sb-plan-right');
+    if (!divider || !right) return;
     const btn     = document.getElementById('split-btn');
     if (on) {
         divider.classList.remove('hidden');

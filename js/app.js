@@ -33,6 +33,14 @@ import { initSubjectManager, subscribeSubjects } from './subjects.js';
 // Inject handleInput callbacks into render.js to avoid circular imports
 setInputCallbacks(handleInput, handleInputRight);
 
+// Track which plan column the user last edited so image insertion targets the right one
+let lastFocusedPlanId = 'sb-plan';
+document.addEventListener('focusin', (e) => {
+    if (e.target.id === 'sb-plan' || e.target.id === 'sb-plan-right') {
+        lastFocusedPlanId = e.target.id;
+    }
+});
+
 // ── Expose all functions that HTML onclick attributes call ──────────────────
 window.changeView          = changeView;
 window.changeWeek          = changeWeek;
@@ -46,7 +54,7 @@ window.handleInput         = handleInput;
 window.handleInputRight    = handleInputRight;
 window.handlePaste         = handlePaste;
 window.handlePasteRight    = handlePasteRight;
-window.insertImageFromFile = (input) => insertImageFromFile(input, handleInput, handleInputRight);
+window.insertImageFromFile = (input) => insertImageFromFile(input, lastFocusedPlanId, handleInput, handleInputRight);
 window.toggleNotesModal    = toggleNotesModal;
 window.closeNotesModal     = closeNotesModal;
 window.handleNotesModalBackdrop = handleNotesModalBackdrop;
