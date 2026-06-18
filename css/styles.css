@@ -1917,6 +1917,145 @@ body { font-family: 'Inter', sans-serif; background-color: #e5e3df; color: #444;
     }
 }
 
+/* ── IDAG VIEW ─────────────────────────────────────────────────────────────── */
+.idag-header {
+    text-align: center;
+    padding: 40px 0 32px;
+}
+
+.idag-meta {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9c9589;
+    margin-bottom: 10px;
+}
+
+.idag-meta-sep {
+    margin: 0 10px;
+    opacity: 0.4;
+}
+
+.idag-greeting {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    font-style: italic;
+    color: #a69085;
+    line-height: 1.1;
+}
+
+.idag-squares {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.idag-square {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07);
+    border: 1px solid #d1cfcb;
+    padding: 24px;
+    min-height: 280px;
+}
+
+.idag-square-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a69085;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e3df;
+}
+
+/* Lektioner */
+.idag-lesson-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid #f0eeed;
+}
+.idag-lesson-item:last-child { border-bottom: none; }
+
+.idag-lesson-time {
+    font-size: 11px;
+    font-weight: 600;
+    color: #b0a99f;
+    min-width: 44px;
+    flex-shrink: 0;
+}
+
+.idag-lesson-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d1cfcb;
+    flex-shrink: 0;
+}
+
+.idag-lesson-subject {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+}
+
+.idag-planned-badge {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: #e8f0e6;
+    color: #6a9466;
+    border-radius: 4px;
+    padding: 2px 6px;
+    flex-shrink: 0;
+}
+
+/* Kom ihåg */
+#idag-notes-content {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.65;
+}
+
+/* Att göra */
+.idag-todo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0eeed;
+}
+.idag-todo-item:last-child { border-bottom: none; }
+
+.idag-todo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid #a6857e;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.idag-todo-text {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.45;
+}
+
+.idag-empty {
+    font-size: 12px;
+    color: #c0bcb8;
+    font-style: italic;
+    padding: 4px 0;
+}
+
 #toolbar-toggle-btn {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }

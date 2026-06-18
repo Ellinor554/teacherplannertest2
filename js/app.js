@@ -29,6 +29,7 @@ import {
     toggleTodoDone, deleteTodoItem, toggleCompletedSection
 } from './todo.js';
 import { initSubjectManager, subscribeSubjects } from './subjects.js';
+import { checkIdagAutoShow, isWeekend } from './idag.js';
 
 // Inject handleInput callbacks into render.js to avoid circular imports
 setInputCallbacks(handleInput, handleInputRight);
@@ -117,6 +118,15 @@ window.onload = () => {
     subscribeSubjects(() => refreshUI());
 
     updateFileStatus('localStorage (ingen diskfil kopplad)');
+
+    // Hide Idag button on weekends (no school day to show)
+    if (isWeekend()) {
+        const idagBtn = document.getElementById('btn-idag');
+        if (idagBtn) idagBtn.style.display = 'none';
+    }
+
+    // Auto-show Idag on first open of the day (weekdays only)
+    checkIdagAutoShow(changeView);
 
     // Close lesson-notes modal on Escape
     document.addEventListener('keydown', (e) => {

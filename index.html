@@ -16,6 +16,7 @@
 <body>
 <div class="flex flex-1 overflow-hidden">
     <div id="main-sidebar" class="flex flex-col w-12 bg-[#b0a99f] border-r border-gray-300 z-30">
+        <button onclick="changeView('idag')" id="btn-idag" class="sidebar-btn">Idag</button>
         <button onclick="changeView('oversikt')" id="btn-oversikt" class="sidebar-btn active">Översikt</button>
         <button onclick="changeView('framtid')" id="btn-framtid" class="sidebar-btn">Framtid</button>
         <button onclick="changeView('mandag')" id="btn-mandag" class="sidebar-btn">Måndag</button>
@@ -38,6 +39,30 @@
                 <button id="arkivera-top-btn" class="hidden arkivera-header-btn" onclick="archiveCurrentYear()">Arkivera Läsår</button>
                 <button id="kursplan-top-btn" class="hidden kursplan-header-btn" onclick="openCurriculumMap('view')">Kursplan</button>
                 <div id="digital-clock" class="clock-display tracking-widest">00:00</div>
+            </div>
+        </div>
+        <div id="view-idag" class="hidden overflow-y-auto custom-scrollbar pb-10">
+            <div class="idag-header">
+                <div class="idag-meta">
+                    <span id="idag-week"></span>
+                    <span class="idag-meta-sep">·</span>
+                    <span id="idag-date"></span>
+                </div>
+                <h1 class="idag-greeting">God morgon!</h1>
+            </div>
+            <div class="idag-squares">
+                <div class="idag-square">
+                    <h2 class="idag-square-title">Dina lektioner idag</h2>
+                    <div id="idag-lessons-content"></div>
+                </div>
+                <div class="idag-square">
+                    <h2 class="idag-square-title">Kom ihåg</h2>
+                    <div id="idag-notes-content"></div>
+                </div>
+                <div class="idag-square">
+                    <h2 class="idag-square-title">Att göra</h2>
+                    <div id="idag-todos-content"></div>
+                </div>
             </div>
         </div>
         <div id="view-oversikt" class="grid grid-cols-5 gap-4 h-full overflow-y-auto custom-scrollbar pb-10"></div>

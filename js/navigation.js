@@ -8,6 +8,7 @@ import { saveData } from './persistence.js';
 import { renderOversikt, renderDayDetail, renderFutureWeeks } from './render.js';
 import { saveAndClearLessonTools, restoreLessonTools } from './tools.js';
 import { renderAcademicPlanningView } from './academicPlanning.js';
+import { renderIdag } from './idag.js';
 
 export function refreshUI() {
     document.getElementById('current-week-display').innerText = currentWeek;
@@ -35,16 +36,22 @@ export function changeView(view) {
     document.getElementById('view-framtid').classList.add('hidden');
     document.getElementById('view-day-detail').classList.add('hidden');
     document.getElementById('view-lasarsplanering').classList.add('hidden');
+    document.getElementById('view-idag').classList.add('hidden');
 
     const isAcademic = view === 'lasarsplanering';
-    document.getElementById('week-nav').classList.toggle('hidden', isAcademic);
+    const isIdag     = view === 'idag';
+    document.getElementById('week-nav').classList.toggle('hidden', isAcademic || isIdag);
     document.getElementById('academic-planning-title').classList.toggle('hidden', !isAcademic);
     const kursplanBtn = document.getElementById('kursplan-top-btn');
     if (kursplanBtn) kursplanBtn.classList.toggle('hidden', !isAcademic);
     const arkiveraBtn = document.getElementById('arkivera-top-btn');
     if (arkiveraBtn) arkiveraBtn.classList.toggle('hidden', !isAcademic);
 
-    if (view === 'oversikt') {
+    if (view === 'idag') {
+        document.getElementById('view-idag').classList.remove('hidden');
+        document.getElementById('btn-idag').classList.add('active');
+        renderIdag();
+    } else if (view === 'oversikt') {
         document.getElementById('view-oversikt').classList.remove('hidden');
         document.getElementById('btn-oversikt').classList.add('active');
         renderOversikt();
