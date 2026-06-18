@@ -1924,6 +1924,7 @@ body { font-family: 'Inter', sans-serif; background-color: #e5e3df; color: #444;
 }
 
 .idag-meta {
+    font-family: 'Playfair Display', serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.12em;
