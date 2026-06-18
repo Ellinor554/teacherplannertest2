@@ -72,3 +72,23 @@ export function toggleSettingsMenu() {
     const isHidden = menu.classList.toggle('hidden');
     if (btn) btn.classList.toggle('active', !isHidden);
 }
+
+const THEME_KEY = 'teacherplanner_theme';
+
+export function initTheme() {
+    if (localStorage.getItem(THEME_KEY) === 'dark') {
+        document.body.classList.add('dark');
+        updateDarkToggle(true);
+    }
+}
+
+export function toggleDarkMode() {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light');
+    updateDarkToggle(isDark);
+}
+
+function updateDarkToggle(isDark) {
+    const thumb = document.getElementById('dark-toggle-thumb');
+    if (thumb) thumb.style.left = isDark ? '16px' : '2px';
+}

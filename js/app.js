@@ -17,7 +17,8 @@ import {
 } from './tools.js';
 import {
     updateClock, toggleSidebar, toggleFullscreen,
-    toggleBottomToolbar, updateFontSize, toggleSplit, toggleSettingsMenu
+    toggleBottomToolbar, updateFontSize, toggleSplit, toggleSettingsMenu,
+    initTheme, toggleDarkMode
 } from './ui.js';
 import {
     initAcademicPlanning, renderAcademicPlanningView,
@@ -75,6 +76,7 @@ window.toggleBottomToolbar = toggleBottomToolbar;
 window.updateFontSize      = updateFontSize;
 window.toggleSplit         = toggleSplit;
 window.toggleSettingsMenu  = toggleSettingsMenu;
+window.toggleDarkMode      = toggleDarkMode;
 window.triggerImportBackup = () => {
     document.getElementById('import-file-input').click();
     toggleSettingsMenu();
@@ -99,6 +101,7 @@ window.openArchiveOverlay = openArchiveOverlay;
 window.onload = () => {
     migrateData();
     saveData(); // persist any format migrations to localStorage
+    initTheme();
     updateClock();
     setInterval(updateClock, 1000);
     renderFutureWeeks();

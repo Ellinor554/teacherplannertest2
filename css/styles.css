@@ -2703,3 +2703,159 @@ body { font-family: 'Inter', sans-serif; background-color: #e5e3df; color: #444;
     color: #b3aca7;
     font-style: italic;
 }
+
+/* ════════════════════════════════════════
+   DARK MODE — espresso palette
+   All rules scoped to body.dark — the default light theme is never touched.
+   Palette: bg #1c1510 · card #27201a · border #3d3028 · sidebar #140f0b
+            text #e8ddd0 · heading #c4a898 · muted #6a5a4c
+════════════════════════════════════════ */
+
+/* Toggle pill (both themes) */
+.dark-toggle-pill {
+    width: 34px; height: 18px; border-radius: 9px; background: #d1cfcb;
+    position: relative; margin-left: auto; flex-shrink: 0; display: inline-block;
+    vertical-align: middle; pointer-events: none;
+}
+.dark-toggle-thumb {
+    position: absolute; top: 2px; left: 2px;
+    width: 14px; height: 14px; border-radius: 50%; background: white;
+    transition: left 0.18s ease;
+}
+body.dark .dark-toggle-pill { background: #a6857e; }
+
+/* ── Base ── */
+body.dark { background-color: #1c1510; color: #e8ddd0; }
+
+/* ── Sidebar ── */
+body.dark #main-sidebar { background: #140f0b; border-color: #3d3028; }
+body.dark .sidebar-btn { background-color: #140f0b; color: #6a5a4c; border-bottom-color: rgba(255,255,255,0.06); }
+body.dark .sidebar-btn.active { background-color: #3a2818; color: #c4a898; }
+body.dark .sidebar-btn-separator { border-top-color: rgba(255,255,255,0.05); }
+
+/* ── Week nav ── */
+body.dark .serif-title { color: #c4a898; }
+body.dark #week-nav button { color: #6a5a4c; }
+body.dark #week-nav button:hover { color: #c4a898; }
+
+/* ── Cards ── */
+body.dark .card { background: #27201a; border-color: #3d3028; }
+
+/* ── Notes area (oversikt + day detail) ── */
+body.dark .notes-area { background: #1c1510; border-color: #3d3028; color: #7a6a5c; }
+body.dark .notes-area:focus { background: #221a14; border-color: #a6857e; }
+
+/* ── Oversikt: dynamically rendered Tailwind elements ── */
+body.dark #view-oversikt [class*="border-gray-100"] { border-color: #3d3028; }
+body.dark #view-oversikt [class*="border-gray-50"]  { border-color: #322618; }
+body.dark #view-oversikt [class*="bg-gray-50"]      { background: #1c1510 !important; color: #5a4a3c; }
+body.dark #view-oversikt .text-gray-400             { color: #5a4a3c; }
+body.dark #view-oversikt .text-gray-300             { color: #4a3a2c; }
+body.dark #view-oversikt [class*="hover:bg-gray-50"]:hover { background: #322618; }
+body.dark #view-oversikt [class*="border-dashed"]   { border-color: #3d3028; color: #5a4a3c; }
+body.dark #view-oversikt [class*="border-dashed"]:hover { background: #322618 !important; }
+
+/* ── Day detail: Tailwind elements ── */
+body.dark #view-day-detail .border-t           { border-color: #3d3028; }
+body.dark #view-day-detail [class*="bg-gray-"] { background: #1c1510; }
+body.dark #view-day-detail [class*="text-gray-4"] { color: #6a5a4c; }
+body.dark #view-day-detail [class*="border-gray-200"] { border-color: #3d3028; color: #6a5a4c; }
+body.dark #view-day-detail [class*="hover:bg-gray-50"]:hover { background: #322618; }
+
+/* ── Framtid (future weeks) ── */
+body.dark #view-framtid [class*="bg-white"]         { background: #27201a; }
+body.dark #view-framtid [class*="border-gray-100"]  { border-color: #3d3028; }
+body.dark #view-framtid [class*="hover:bg-gray-50"]:hover { background: #322618; }
+body.dark #view-framtid [class*="text-gray-4"]      { color: #6a5a4c; }
+
+/* ── Bottom toolbar ── */
+body.dark #bottom-toolbar { background: #140f0b; border-color: #3d3028; }
+body.dark #bottom-toolbar [class*="text-gray-4"] { color: #3d3028; }
+body.dark #bottom-toolbar [class*="bg-gray-"]    { background: #3d3028; }
+body.dark .tool-cat-btn { background: #27201a; border-color: #3d3028; color: #8a7a6a; }
+body.dark .tool-cat-btn:hover,
+body.dark .tool-cat-btn.active { background: #322618; border-color: #a6857e; color: #c4a898; }
+body.dark .tool-launcher-popup { background: #27201a; border-color: #3d3028; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+body.dark .tool-launcher-item { color: #e8ddd0; }
+body.dark .tool-launcher-item:hover { background: #3a2818; color: #c4a898; }
+body.dark .tool-launcher-empty { color: #5a4a3c; }
+body.dark #toolbar-toggle-btn { background: #27201a !important; border-color: #3d3028 !important; }
+
+/* ── Settings menu ── */
+body.dark .settings-menu { background: rgba(28,21,16,0.97); border-color: rgba(61,48,40,0.8); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+body.dark .settings-item { color: #a89880; }
+body.dark .settings-item:hover { background: rgba(166,133,126,0.1); color: #c4a898; }
+body.dark .settings-item svg { color: #5a4a3c; }
+body.dark .settings-item:hover svg { color: #c4a898; }
+body.dark .settings-status { color: #4a3a2c; }
+body.dark .settings-divider { background: rgba(255,255,255,0.05); }
+
+/* ── Floating tools ── */
+body.dark .floating-tool { background: #27201a; border-color: #3d3028; }
+body.dark .floating-tool-header { background: #1c1510; border-color: #3d3028; }
+body.dark .floating-tool-body { background: #27201a; color: #e8ddd0; }
+body.dark .floating-tool-resize-hint { color: #5a4a3c; }
+body.dark .floating-tool-body table td,
+body.dark .floating-tool-body table th { border-color: #3d3028; }
+
+/* ── Todo panel ── */
+body.dark #todo-panel { background: rgba(39,32,26,0.97); border-color: rgba(61,48,40,0.4); }
+body.dark .todo-panel-title { color: #c4a898; }
+body.dark .todo-close-btn { color: #6a5a4c; }
+body.dark .todo-input { color: #e8ddd0; border-bottom-color: #3d3028; }
+body.dark .todo-input::placeholder { color: #5a4a3c; }
+body.dark .todo-text { color: #e8ddd0; }
+body.dark .todo-item:hover { background: rgba(166,133,126,0.08); }
+body.dark .todo-completed-header { color: #6a5a4c; border-top-color: #3d3028; }
+body.dark .todo-empty { color: #5a4a3c; }
+
+/* ── Private notes modal ── */
+body.dark .notes-modal-content { background: #27201a; }
+body.dark .notes-modal-content [class*="text-gray-"] { color: #8a7a6a; }
+body.dark .notes-modal-content [class*="border-gray-"] { border-color: #3d3028; }
+
+/* ── Idag ── */
+body.dark .idag-meta { color: #6a5a4c; }
+body.dark .idag-greeting { color: #c4a898; }
+body.dark .idag-square { background: #27201a; border-color: #3d3028; }
+body.dark .idag-square-title { color: #8a7a6a; border-bottom-color: #3d3028; }
+body.dark .idag-lesson-item { border-bottom-color: #322618; }
+body.dark .idag-lesson-time { color: #5a4a3c; }
+body.dark .idag-lesson-subject { color: #e8ddd0; }
+body.dark #idag-notes-content { color: #a89880; }
+body.dark .idag-todo-item { border-bottom-color: #322618; }
+body.dark .idag-todo-text { color: #e8ddd0; }
+body.dark .idag-empty { color: #5a4a3c; }
+
+/* ── Academic planning ── */
+body.dark .academic-subject-sidebar { background: #1c1510; border-color: #3d3028; }
+body.dark .academic-subject-btn { color: #8a7a6a; }
+body.dark .academic-subject-btn:hover { background: #322618; }
+body.dark .academic-subject-btn.active { background: #3a2818; color: #c4a898; }
+body.dark .academic-subject-label { color: #8a7a6a; }
+body.dark .academic-area-panel { background: #27201a; border-color: #3d3028; }
+body.dark .academic-panel-header { border-bottom-color: #3d3028; }
+body.dark .academic-panel-tabs { border-bottom-color: #3d3028; }
+body.dark .academic-panel-tab { color: #8a7a6a; border-color: #3d3028; }
+body.dark .academic-panel-tab.active { background: #3a2818; color: #c4a898; border-color: #a6857e; }
+body.dark .academic-add-btn { background: #27201a; border-color: #3d3028; color: #8a7a6a; }
+body.dark .academic-add-btn:hover { background: #322618; color: #c4a898; }
+body.dark .academic-area-item { border-bottom-color: #322618; color: #e8ddd0; }
+body.dark .academic-area-item:hover { background: #322618; }
+body.dark .academic-area-item.active { background: #3a2818; }
+body.dark .academic-area-title-display { color: #e8ddd0; }
+body.dark .academic-area-week-badge { background: #322618; color: #8a7a6a; }
+body.dark .academic-week-num-input { background: #1c1510; color: #e8ddd0; border-color: #3d3028; }
+
+/* ── Kursplan header button ── */
+body.dark .kursplan-header-btn { background: #27201a; border-color: #3d3028; color: #8a7a6a; }
+body.dark .kursplan-header-btn:hover { background: #322618; border-color: #5a4a3c; color: #c4a898; }
+
+/* ── Presentation settings panel (inside settings menu) ── */
+body.dark .presentation-settings-title { color: #8a7a6a; }
+body.dark .presentation-settings-input { background: #1c1510; border-color: #3d3028; color: #e8ddd0; }
+body.dark .presentation-settings-add-btn { background: #3a2818; border-color: #3d3028; color: #c4a898; }
+body.dark .presentation-settings-row { background: rgba(39,32,26,0.8); border-color: #3d3028; }
+body.dark .presentation-settings-name { color: #e8ddd0; background: transparent; }
+body.dark .presentation-settings-btn { background: #27201a; border-color: #3d3028; color: #8a7a6a; }
+body.dark .presentation-settings-empty { color: #5a4a3c; }
